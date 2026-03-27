@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "Postman Library API v2",
+    "description": "Colección con las 7 solicitudes requeridas para la lección.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "conseguir libros",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "conseguir libros de ficción",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books?type=fiction",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books"],
+          "query": [
+            {
+              "key": "type",
+              "value": "fiction"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "obtener libro por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books/:id",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "añadir un libro",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 101,\n  \"title\": \"Cien años de soledad\",\n  \"author\": \"Gabriel García Márquez\",\n  \"type\": \"fiction\"\n}"
+        },
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "sacar un libro",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"member\": \"daniel.dongo@utec.edu.pe\"\n}"
+        },
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books/:id",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "eliminar un libro",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/books/:id",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "comprobación de habilidades",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://library-api.postmanlabs.com/skills-check",
+          "protocol": "https",
+          "host": ["library-api", "postmanlabs", "com"],
+          "path": ["skills-check"]
+        }
+      }
+    }
+  ]
+}

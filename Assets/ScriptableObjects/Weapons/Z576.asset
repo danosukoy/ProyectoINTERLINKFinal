@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ef7ce219ca5fe479686c66aa715dd5, type: 3}
+  m_Name: Z576
+  m_EditorClassIdentifier: 
+  itemName: Z576
+  modelPrefab: {fileID: 6452918620935214338, guid: accf9a21919af6344beb4607f4484106, type: 3}
+  weaponPosition: {x: 0, y: 0, z: 0.41}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  Spread: {x: 0.1, y: 0.1, z: 0.1}
+  damage: 0
+  maxDistance: 0
+  fireRate: 0
+  currentAmmo: 0
+  magSize: 0
+  reloadTime: 0
+  isReloading: 0

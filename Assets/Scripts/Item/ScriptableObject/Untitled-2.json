@@ -1,0 +1,159 @@
+{
+  "info": {
+    "name": "Postman Library API v2",
+    "description": "Colección corregida con las 7 solicitudes y configuración para aprobar el curso.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "12345",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "conseguir libros",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "conseguir libros de ficción",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books?genre=fiction&checkedOut=false",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"],
+          "query": [
+            { "key": "genre", "value": "fiction" },
+            { "key": "checkedOut", "value": "false" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "obtener libro por id",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/books/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "añadir un libro",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Cien años de soledad\",\n  \"author\": \"Gabriel García Márquez\",\n  \"genre\": \"fiction\",\n  \"yearPublished\": 1967\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "sacar un libro",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"member\": \"daniel.dongo@utec.edu.pe\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "eliminar un libro",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/books/:id",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", ":id"]
+        }
+      }
+    },
+    {
+      "name": "comprobación de habilidades",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "student-expert", "value": "12345" }
+        ],
+        "url": {
+          "raw": "{{skillcheckBaseUrl}}/skills-check?movieName=Titanic",
+          "host": ["{{skillcheckBaseUrl}}"],
+          "path": ["skills-check"],
+          "query": [
+            { "key": "movieName", "value": "Titanic" }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"actorName\": \"Leonardo DiCaprio\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set(\"favoriteActor\", \"Leonardo DiCaprio\");"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}
