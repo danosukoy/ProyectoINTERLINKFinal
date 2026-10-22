@@ -67,3 +67,7 @@ ProfilerCaptures/
 .DS_Store
 Thumbs.db
 Assets/_Recovery.meta
+
+# =============== Material legacy agrupado en Assets/_NoUsado ===============
+# (la carpeta se versiona a proposito: borrarla es un solo commit; solo se ignora la basura de crasheo)
+Assets/_NoUsado/_Recovery/
