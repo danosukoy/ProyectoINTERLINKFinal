@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448e0a864e7b4a489b0381f361511c57, type: 3}
+  m_Name: SwayBob_Pistol
+  m_EditorClassIdentifier: Assembly-CSharp::SwayBobProfile
+  step: 0.018
+  maxStepDistance: 0.08
+  rotationStep: 5.5
+  maxRotationStep: 7
+  smooth: 8
+  smoothRot: 10
+  strafeSway: 0.022
+  bobFrequency: 9
+  bobExaggeration: 1
+  travelLimit: {x: 0.02, y: 0.018, z: 0.02}
+  bobLimit: {x: 0.008, y: 0.008, z: 0.008}
+  bobRotationMultiplier: {x: 0.8, y: 0.8, z: 1.2}
+  headBobAmplitude: 0.006
+  headBobFrequency: 11
+  sprintMultiplier: 1.35
+  airDamping: 0.2

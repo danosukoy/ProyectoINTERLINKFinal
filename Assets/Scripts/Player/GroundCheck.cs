@@ -4,58 +4,74 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    PlayerController playerController;
+    PlayerLocomotion locomocion;
+
+    // Capas de jugadores: no deben contar como "suelo"
+    // (hitboxes de disparo y cuerpos físicos ajenos)
+    static int layerHitbox = -1;
+    static int layerPlayerBody = -1;
 
     void Awake()
     {
-        playerController = GetComponentInParent<PlayerController>();
+        locomocion = GetComponentInParent<PlayerLocomotion>();
+        if (layerHitbox < 0) layerHitbox = LayerMask.NameToLayer("Hitbox");
+        if (layerPlayerBody < 0) layerPlayerBody = LayerMask.NameToLayer("PlayerBody");
+    }
+
+    bool Ignorar(GameObject go)
+    {
+        if (locomocion != null && go == locomocion.gameObject)
+            return true;
+
+        int layer = go.layer;
+        return layer == layerHitbox || layer == layerPlayerBody;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(other.gameObject))
             return;
-            
-        playerController.SetGroundedState(true);
+
+        locomocion.SetGroundedState(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(other.gameObject))
             return;
 
-        playerController.SetGroundedState(false);
+        locomocion.SetGroundedState(false);
     }
 
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(other.gameObject))
             return;
-            
-        playerController.SetGroundedState(true);
+
+        locomocion.SetGroundedState(true);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(collision.gameObject))
             return;
-            
-        playerController.SetGroundedState(true);
+
+        locomocion.SetGroundedState(true);
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(collision.gameObject))
             return;
-            
-        playerController.SetGroundedState(true);
+
+        locomocion.SetGroundedState(false);
     }
 
     void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject == playerController.gameObject)
+        if (locomocion == null || Ignorar(collision.gameObject))
             return;
-            
-        playerController.SetGroundedState(true);
+
+        locomocion.SetGroundedState(true);
     }
 }

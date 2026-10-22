@@ -1,0 +1,21 @@
+{
+    "name": "Game.UI",
+    "rootNamespace": "",
+    "references": [
+        "Game.Data",
+        "Game.Gameplay",
+        "Unity.Netcode.Runtime",
+        "Unity.TextMeshPro",
+        "Unity.Collections",
+        "Facepunch.Steamworks"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

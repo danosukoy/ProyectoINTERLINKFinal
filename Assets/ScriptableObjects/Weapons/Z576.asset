@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ef7ce219ca5fe479686c66aa715dd5, type: 3}
+  m_Script: {fileID: 11500000, guid: aaaf902201f3847498334f690f26a6c7, type: 3}
   m_Name: Z576
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponDefinition
   itemName: Z576
-  modelPrefab: {fileID: 6452918620935214338, guid: accf9a21919af6344beb4607f4484106, type: 3}
-  weaponPosition: {x: 0, y: 0, z: 0.41}
+  itemInfo: 
+  category: 0
+  model: {fileID: 0}
+  weaponPosition: {x: 0.277, y: 0, z: 1.312}
+  weaponRotation: {x: 0, y: 0, z: 0, w: 1}
+  speed: 10
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -22,7 +26,7 @@ MonoBehaviour:
   damage: 0
   maxDistance: 0
   fireRate: 0
-  currentAmmo: 0
+  isAutomatic: 1
   magSize: 0
+  reserveAmmo: 90
   reloadTime: 0
-  isReloading: 0
