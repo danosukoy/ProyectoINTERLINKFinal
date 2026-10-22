@@ -12,6 +12,7 @@ public class PlayerController : NetworkBehaviour
 {
     public PlayerLocomotion Locomocion { get; private set; }
     public PlayerCombat Combate { get; private set; }
+    public PlayerSkills Habilidades { get; private set; }
 
     // La vida vive en el componente Health (autoridad de servidor)
     public Health Vida { get; private set; }
@@ -85,6 +86,7 @@ public class PlayerController : NetworkBehaviour
     {
         Locomocion = GetComponent<PlayerLocomotion>();
         Combate = GetComponent<PlayerCombat>();
+        Habilidades = GetComponent<PlayerSkills>();
         Vida = GetComponent<Health>();
         if (Vida != null)
         {
@@ -198,6 +200,7 @@ public class PlayerController : NetworkBehaviour
 
         Locomocion.TickLocal();
         Combate.TickLocal();
+        if (Habilidades != null) Habilidades.TickLocal();
     }
 
     private void FixedUpdate()

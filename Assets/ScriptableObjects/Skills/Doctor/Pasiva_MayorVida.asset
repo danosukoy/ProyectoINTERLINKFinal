@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24c36900f6ea4447b478123805461bb, type: 3}
+  m_Name: Pasiva_MayorVida
+  m_EditorClassIdentifier: Game.Gameplay::PasivaMayorVida
+  nombre: Mayor Vida
+  descripcion: 'Pasiva del Doctor: +25 puntos de vida maxima.'
+  icono: {fileID: 0}
+  clase: 1
+  tipo: 0
+  cooldown: 0
+  cargas: 1
+  duracion: 0
+  cancelaAlMorir: 1
+  vidaExtra: 25

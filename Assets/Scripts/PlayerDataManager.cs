@@ -40,6 +40,10 @@ public class PlayerDataManager : MonoBehaviour
 
     public int skillPoints = 5;
 
+    [Header("Clase (habilidades fijas al entrar a la partida)")]
+    [Tooltip("Kit completo: pasiva + seleccion + especial. Se sincroniza en el spawn.")]
+    public ClaseDefinition claseElegida;
+
     [Header("Registros (para persistencia del loadout)")]
     [SerializeField] private WeaponRegistry weaponRegistry;
     [SerializeField] private SkillRegistry skillRegistry;

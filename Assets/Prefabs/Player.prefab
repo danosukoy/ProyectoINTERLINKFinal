@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 7700000102}
   - component: {fileID: 8132277709361809404}
   - component: {fileID: 8595077490583527019}
+  - component: {fileID: 4405009417113110153}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -830,6 +831,33 @@ MonoBehaviour:
   vidaMaxima: 100
   vidaActual:
     m_InternalValue: 100
+  vidaMaximaRed:
+    m_InternalValue: 0
+  protegido:
+    m_InternalValue: 0
+--- !u!114 &4405009417113110153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335670271476814257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9875d044a534be198b0c6a9ebf4040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Gameplay::PlayerSkills
+  ShowTopMostFoldoutHeaderGroup: 1
+  clasesDisponibles:
+  - {fileID: 11400000, guid: 79814d26e63b44322941d8dc29fb4397, type: 2}
+  - {fileID: 11400000, guid: df729b8a9ee0a4f71b2c04850a5228ec, type: 2}
+  - {fileID: 11400000, guid: 2edf06314ffbe42c2bd6f734abdbff65, type: 2}
+  clasePorDefecto: {fileID: 11400000, guid: 79814d26e63b44322941d8dc29fb4397, type: 2}
+  combate: {fileID: 7700000102}
+  salud: {fileID: 8595077490583527019}
+  camara: {fileID: 0}
+  claseRed:
+    m_InternalValue: -1
 --- !u!1 &2651040887060807630
 GameObject:
   m_ObjectHideFlags: 0

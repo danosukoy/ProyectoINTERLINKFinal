@@ -19,6 +19,19 @@ public class Health : NetworkBehaviour, IDamageable
     );
 
     /// <summary>
+    /// Vida máxima efectiva (base + pasivas de clase). La escribe SOLO el
+    /// servidor; los clientes la reciben por red. 0 = sin fijar (usa vidaMaxima).
+    /// </summary>
+    public NetworkVariable<float> vidaMaximaRed = new NetworkVariable<float>(
+        0f,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server
+    );
+
+    // Respaldo local para el modo offline del editor (sin Netcode activo)
+    private float vidaMaximaLocal = 0f;
+
+    /// <summary>
     /// Protección anti spawn-kill: mientras está activa se ignora todo daño.
     /// La escribe el servidor (GameModeManager al spawnear/respawnear).
     /// </summary>
@@ -44,7 +57,33 @@ public class Health : NetworkBehaviour, IDamageable
     public event Action<float, float> OnVidaCambiada;
 
     public float Vida => vidaActual != null ? vidaActual.Value : vidaMaxima;
-    public float VidaMaxima => vidaMaxima;
+    public float VidaMaxima => VidaMaximaEfectiva();
+
+    /// <summary>Vida máxima base del prefab, sin modificadores (la usan las pasivas).</summary>
+    public float VidaMaximaBase => vidaMaxima;
+
+    private float VidaMaximaEfectiva()
+    {
+        float enRed = vidaMaximaRed != null ? vidaMaximaRed.Value : 0f;
+        if (enRed > 0f) return enRed;
+        if (vidaMaximaLocal > 0f) return vidaMaximaLocal;
+        return vidaMaxima;
+    }
+
+    /// <summary>
+    /// Fija la vida máxima efectiva. Solo servidor (u offline). La usan las
+    /// pasivas de clase al spawnear y los buffs que cambian la vida máxima.
+    /// </summary>
+    public void EstablecerVidaMaxima(float valor, bool curarHastaMaximo = false)
+    {
+        if (IsSpawned && !IsServer) return;
+
+        float nueva = Mathf.Max(1f, valor);
+        vidaMaximaLocal = nueva;
+        if (IsSpawned) vidaMaximaRed.Value = nueva;
+
+        vidaActual.Value = curarHastaMaximo ? nueva : Mathf.Min(vidaActual.Value, nueva);
+    }
     public bool Muerto => Vida <= 0f;
 
     private MeshRenderer cuerpoRenderer;
@@ -71,7 +110,7 @@ public class Health : NetworkBehaviour, IDamageable
         // El servidor fija la vida inicial autoritativa
         if (IsServer)
         {
-            vidaActual.Value = vidaMaxima;
+            vidaActual.Value = VidaMaxima;
         }
     }
 
@@ -185,12 +224,12 @@ public class Health : NetworkBehaviour, IDamageable
     public void Curar(float cantidad)
     {
         if (!IsServer && IsSpawned) return;
-        vidaActual.Value = Mathf.Min(vidaMaxima, vidaActual.Value + cantidad);
+        vidaActual.Value = Mathf.Min(VidaMaxima, vidaActual.Value + cantidad);
     }
 
     public void RestaurarVida()
     {
         if (!IsServer && IsSpawned) return;
-        vidaActual.Value = vidaMaxima;
+        vidaActual.Value = VidaMaxima;
     }
 }
